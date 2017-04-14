@@ -3,16 +3,20 @@ import SlackKit
 
 class StatusBot {
 
-    let client: SlackClient
+    let bot: SlackKit
     
     init(token: String) {
-        client = SlackClient(apiToken: token)
-        client.slackEventsDelegate = self
+        bot = SlackKit(withAPIToken: token)
+        bot.onClientInitalization = { client in
+            DispatchQueue.main.async {
+                client.slackEventsDelegate = self
+            }
+        }
     }
 }
 
 extension StatusBot: SlackEventsDelegate {
-    func userChanged(_ user: User, client: SlackClient) {
+    func userChanged(_ user: User, client: Client) {
         let name = user.name ?? "<unknown>"
         let statusEmoji = user.profile?.statusEmoji ?? "<unknown>"
         let statusText = user.profile?.statusText ?? "<unknown>"
@@ -28,20 +32,21 @@ extension StatusBot: SlackEventsDelegate {
         })
     }
     
-    func preferenceChanged(_ preference: String, value: Any?, client: SlackClient) {
+    func preferenceChanged(_ preference: String, value: Any?, client: Client) {
     }
     
-    func presenceChanged(_ user: User, presence: String, client: SlackClient) {
+    func presenceChanged(_ user: User, presence: String, client: Client) {
     }
     
-    func manualPresenceChanged(_ user: User, presence: String, client: SlackClient) {
+    func manualPresenceChanged(_ user: User, presence: String, client: Client) {
     }
     
-    func botEvent(_ bot: Bot, client: SlackClient) {
+    func botEvent(_ bot: Bot, client: Client) {
     }
     
 }
 
+let statusbot = StatusBot(token: Secret.token)
 
-let statusbot = StatusBot(token: token)
-statusbot.client.connect()
+print("Running Statusbot")
+RunLoop.main.run()
