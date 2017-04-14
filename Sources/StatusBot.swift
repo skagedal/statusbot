@@ -21,7 +21,6 @@ class StatusBot {
     let channel: String
     
     private var lastStatus: [UserName: Status] = [:]
-    private let queue = DispatchQueue(label: "statusbot.private")
     
     init(token: String, channel: String) {
         self.channel = channel
@@ -30,21 +29,19 @@ class StatusBot {
     }
 
     fileprivate func statusUpdated(to status: Status, for name: UserName, on client: SlackClient) {
-        queue.async {
-            if let previousStatus = self.lastStatus[name], previousStatus == status {
-                return
-            }
-            
-            self.lastStatus[name] = status
-            
-            let text = "\(name): \(status.emoji) \(status.text)"
-            
-            client.webAPI.sendMessage(channel: self.channel, text: text, success: { (ts, channel) in
-                print("success sending \(String(describing: ts))")
-            }, failure: { error in
-                print("error sending message: \(error)")
-            })
+        if let previousStatus = lastStatus[name], previousStatus == status {
+            return
         }
+        
+        lastStatus[name] = status
+        
+        let text = "\(name): \(status.emoji) \(status.text)"
+        
+        client.webAPI.sendMessage(channel: channel, text: text, success: { (ts, channel) in
+            print("success sending \(String(describing: ts))")
+        }, failure: { error in
+            print("error sending message: \(error)")
+        })
     }
 }
 
