@@ -1,0 +1,120 @@
+{
+  "autoPin": true,
+  "pins": [
+    {
+      "package": "Axis",
+      "reason": null,
+      "repositoryURL": "https://github.com/Zewo/Axis.git",
+      "version": "0.14.0"
+    },
+    {
+      "package": "CHTTPParser",
+      "reason": null,
+      "repositoryURL": "https://github.com/Zewo/CHTTPParser.git",
+      "version": "0.14.0"
+    },
+    {
+      "package": "CLibvenice",
+      "reason": null,
+      "repositoryURL": "https://github.com/Zewo/CLibvenice.git",
+      "version": "0.14.0"
+    },
+    {
+      "package": "COpenSSL",
+      "reason": null,
+      "repositoryURL": "https://github.com/Zewo/COpenSSL.git",
+      "version": "0.14.0"
+    },
+    {
+      "package": "CPOSIX",
+      "reason": null,
+      "repositoryURL": "https://github.com/Zewo/CPOSIX.git",
+      "version": "0.14.0"
+    },
+    {
+      "package": "CYAJL",
+      "reason": null,
+      "repositoryURL": "https://github.com/Zewo/CYAJL.git",
+      "version": "0.14.0"
+    },
+    {
+      "package": "File",
+      "reason": null,
+      "repositoryURL": "https://github.com/Zewo/File.git",
+      "version": "0.14.0"
+    },
+    {
+      "package": "HTTP",
+      "reason": null,
+      "repositoryURL": "https://github.com/Zewo/HTTP.git",
+      "version": "0.14.3"
+    },
+    {
+      "package": "HTTPClient",
+      "reason": null,
+      "repositoryURL": "https://github.com/Zewo/HTTPClient.git",
+      "version": "0.14.1"
+    },
+    {
+      "package": "HTTPFile",
+      "reason": null,
+      "repositoryURL": "https://github.com/Zewo/HTTPFile.git",
+      "version": "0.14.0"
+    },
+    {
+      "package": "IP",
+      "reason": null,
+      "repositoryURL": "https://github.com/Zewo/IP.git",
+      "version": "0.14.0"
+    },
+    {
+      "package": "OpenSSL",
+      "reason": null,
+      "repositoryURL": "https://github.com/Zewo/OpenSSL.git",
+      "version": "0.14.0"
+    },
+    {
+      "package": "POSIX",
+      "reason": null,
+      "repositoryURL": "https://github.com/Zewo/POSIX.git",
+      "version": "0.14.1"
+    },
+    {
+      "package": "Reflection",
+      "reason": null,
+      "repositoryURL": "https://github.com/Zewo/Reflection.git",
+      "version": "0.14.3"
+    },
+    {
+      "package": "SlackKit",
+      "reason": null,
+      "repositoryURL": "https://github.com/pvzig/SlackKit.git",
+      "version": "0.0.6"
+    },
+    {
+      "package": "TCP",
+      "reason": null,
+      "repositoryURL": "https://github.com/Zewo/TCP.git",
+      "version": "0.14.0"
+    },
+    {
+      "package": "Venice",
+      "reason": null,
+      "repositoryURL": "https://github.com/Zewo/Venice.git",
+      "version": "0.14.0"
+    },
+    {
+      "package": "WebSocket",
+      "reason": null,
+      "repositoryURL": "https://github.com/Zewo/WebSocket.git",
+      "version": "0.14.3"
+    },
+    {
+      "package": "WebSocketClient",
+      "reason": null,
+      "repositoryURL": "https://github.com/Zewo/WebSocketClient",
+      "version": "0.14.1"
+    }
+  ],
+  "version": 1
+}

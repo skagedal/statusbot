@@ -1,0 +1,22 @@
+diff --git a/SlackKit/Sources/User.swift b/SlackKit/Sources/User.swift
+index d055a3f..a34602a 100644
+--- a/SlackKit/Sources/User.swift
++++ b/SlackKit/Sources/User.swift
+@@ -25,6 +25,8 @@ public struct User {
+     
+     public struct Profile {
+         
++        internal(set) public var statusEmoji: String?
++        internal(set) public var statusText: String?
+         internal(set) public var firstName: String?
+         internal(set) public var lastName: String?
+         internal(set) public var realName: String?
+@@ -39,6 +41,8 @@ public struct User {
+         internal(set) public var customProfile: CustomProfile?
+         
+         internal init(profile: [String: Any]?) {
++            statusEmoji = profile?["status_emoji"] as? String
++            statusText = profile?["status_text"] as? String
+             firstName = profile?["first_name"] as? String
+             lastName = profile?["last_name"] as? String
+             realName = profile?["real_name"] as? String
