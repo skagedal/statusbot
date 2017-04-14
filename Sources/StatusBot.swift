@@ -17,7 +17,7 @@ private typealias UserName = String
 
 class StatusBot {
     
-    let bot: SlackKit
+    let client: SlackClient
     let channel: String
     
     private var lastStatus: [UserName: Status] = [:]
@@ -25,15 +25,11 @@ class StatusBot {
     
     init(token: String, channel: String) {
         self.channel = channel
-        bot = SlackKit(withAPIToken: token)
-        bot.onClientInitalization = { client in
-            DispatchQueue.main.async {
-                client.slackEventsDelegate = self
-            }
-        }
+        client = SlackClient(apiToken: token)
+        client.slackEventsDelegate = self
     }
 
-    fileprivate func statusUpdated(to status: Status, for name: UserName, on client: Client) {
+    fileprivate func statusUpdated(to status: Status, for name: UserName, on client: SlackClient) {
         queue.async {
             if let previousStatus = self.lastStatus[name], previousStatus == status {
                 return
@@ -53,7 +49,7 @@ class StatusBot {
 }
 
 extension StatusBot: SlackEventsDelegate {
-    func userChanged(_ user: User, client: Client) {
+    func userChanged(_ user: User, client: SlackClient) {
         guard let name = user.name,
             let profile = user.profile,
             let emoji = profile.statusEmoji,
@@ -65,8 +61,8 @@ extension StatusBot: SlackEventsDelegate {
         statusUpdated(to: status, for: name, on: client)
     }
     
-    func preferenceChanged(_ preference: String, value: Any?, client: Client) { }
-    func presenceChanged(_ user: User, presence: String, client: Client) { }
-    func manualPresenceChanged(_ user: User, presence: String, client: Client) { }
-    func botEvent(_ bot: Bot, client: Client) { }
+    func preferenceChanged(_ preference: String, value: Any?, client: SlackClient) { }
+    func presenceChanged(_ user: User, presence: String, client: SlackClient) { }
+    func manualPresenceChanged(_ user: User, presence: String, client: SlackClient) { }
+    func botEvent(_ bot: Bot, client: SlackClient) { }
 }
