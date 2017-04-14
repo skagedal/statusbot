@@ -1,0 +1,1 @@
+bonstatusbot: .build/release/statusbot
