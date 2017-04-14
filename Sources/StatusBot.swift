@@ -36,6 +36,7 @@ class StatusBot {
         lastStatus[name] = status
         
         let text = "\(name): \(status.emoji) \(status.text)"
+        print(text)
         
         client.webAPI.sendMessage(channel: channel, text: text, success: { (ts, channel) in
             print("success sending \(String(describing: ts))")
