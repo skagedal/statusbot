@@ -11,4 +11,5 @@ let statusbot = StatusBot(token: token,
                           channel: "test-your-bot-here")
 
 print("Running Statusbot")
-RunLoop.main.run()
+statusbot.client.connect()
+
